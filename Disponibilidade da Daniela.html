@@ -1,0 +1,437 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Disponibilidade da Daniela</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: abertura preta, barra de navegação fixa, agenda semanal em grade (dias em colunas, horas em linhas) com painel de detalhe do dia selecionado; demais seções em filetes finos sobre fundo claro. */
+:root {
+  --ink: #080808;
+  --ink-soft: #1b1b1f;
+  --red: #E11020;
+  --red-tint: rgba(225, 16, 32, 0.055);
+  --paper: #F5F5F5;
+  --white: #ffffff;
+  --mute: #5a5a60;
+  --line: #dcdce0;
+  --line-strong: #bdbdc3;
+  --ok: #1d8f4e;
+  --display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --row: 26px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  background: var(--ink); z-index: 40;
+}
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Abertura */
+header.top { background: var(--ink); color: var(--paper); }
+header.top .wrap { padding-block: 44px 48px; }
+.eyebrow {
+  margin: 0 0 16px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red);
+}
+h1 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(46px, 10vw, 80px); line-height: 0.94; letter-spacing: 0.012em;
+  margin: 0 0 20px; text-wrap: balance;
+}
+.lede { max-width: 56ch; margin: 0; color: #cfcfd4; font-size: 17px; line-height: 1.65; }
+
+/* Navegação fixa */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30;
+  background: var(--ink); border-top: 1px solid #26262b; border-bottom: 1px solid #26262b;
+}
+.bar-in { display: flex; align-items: stretch; justify-content: space-between; gap: 16px; }
+.brand {
+  display: none; align-self: center;
+  font-family: var(--display); font-size: 20px; letter-spacing: 0.06em; color: var(--paper); white-space: nowrap;
+}
+.links { display: flex; flex: 1; justify-content: space-between; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.links::-webkit-scrollbar { display: none; }
+.links a {
+  position: relative; display: block; padding: 15px 4px 13px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #9d9da4; text-decoration: none; white-space: nowrap;
+  transition: color .2s ease;
+}
+.links a::after {
+  content: ""; position: absolute; left: 4px; right: 4px; bottom: 0; height: 2px;
+  background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+}
+.links a:hover { color: var(--paper); }
+.links a.on { color: var(--paper); }
+.links a.on::after { transform: scaleX(1); }
+@media (min-width: 640px) {
+  .brand { display: block; }
+  .links { flex: 0 0 auto; gap: 28px; }
+}
+
+/* Seções */
+section { border-bottom: 1px solid var(--line); scroll-margin-top: 56px; }
+section .wrap { padding-block: 44px; }
+h2 {
+  font-family: var(--display); font-weight: 400;
+  font-size: 40px; letter-spacing: 0.03em; line-height: 1; margin: 0 0 8px;
+}
+.sub { margin: 0 0 28px; color: var(--mute); max-width: 62ch; }
+h3.lab {
+  margin: 0 0 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red);
+}
+
+/* Status */
+.now {
+  display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin: 0 0 22px; padding: 8px 14px 8px 12px;
+  background: var(--white); border: 1px solid var(--line); font-size: 13px;
+}
+.now .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); flex: none; }
+.now.live .dot { background: var(--ok); box-shadow: 0 0 0 3px rgba(29, 143, 78, 0.18); }
+.now b { font-weight: 600; }
+.now span.rest { color: var(--mute); }
+
+/* Tabela semanal */
+.tbl { border-top: 1px solid var(--ink); }
+.tr {
+  display: grid; grid-template-columns: 11rem repeat(3, minmax(0, 1fr)); gap: 0 24px; align-items: start;
+  padding: 20px 10px; border-bottom: 1px solid var(--line);
+  transition: background-color .2s ease;
+}
+.tr.head { padding: 12px 10px; }
+.tr:not(.head):hover { background: var(--white); }
+.tr.today { background: var(--red-tint); }
+.tr.today:hover { background: rgba(225, 16, 32, 0.09); }
+.th { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); }
+.dn { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; font-family: var(--display); font-size: 28px; line-height: 1; letter-spacing: 0.03em; }
+.hoje {
+  font-family: var(--body); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--red); color: #fff; padding: 3px 7px 2px; line-height: 1.3;
+}
+.tot { display: block; margin-top: 8px; font-size: 12px; color: var(--mute); font-variant-numeric: tabular-nums; }
+.tot b { color: var(--ink); font-weight: 600; }
+.td { min-width: 0; }
+.pl { display: none; margin-bottom: 4px; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); }
+.tv { display: block; font-size: 17px; font-weight: 500; line-height: 1.3; font-variant-numeric: tabular-nums; }
+.tl { display: block; margin-top: 2px; font-size: 12px; color: var(--mute); font-variant-numeric: tabular-nums; }
+.meter { display: block; height: 3px; margin-top: 10px; background: var(--line); }
+.meter i { display: block; height: 100%; background: var(--ink); }
+@media (max-width: 640px) {
+  .tr.head { display: none; }
+  .tr { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 12px; padding: 18px 4px; }
+  .td-day { grid-column: 1 / -1; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .tot { margin-top: 0; }
+  .pl { display: block; }
+  .tv { font-size: 14px; }
+}
+
+/* Prazos */
+.levels { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.lv {
+  display: grid; grid-template-columns: minmax(0, 13.5rem) minmax(0, 1fr); gap: 6px 24px;
+  padding: 18px 8px; border-bottom: 1px solid var(--line);
+  transition: background-color .2s ease;
+}
+.lv:hover { background: var(--white); }
+.lv-k { display: flex; align-items: center; gap: 14px; }
+.lv-name { font-family: var(--display); font-size: 26px; line-height: 1.05; letter-spacing: 0.03em; }
+.bars { display: inline-flex; align-items: flex-end; gap: 3px; height: 18px; flex: none; }
+.bars i { display: block; width: 5px; background: var(--line-strong); }
+.bars i:nth-child(1) { height: 7px; }
+.bars i:nth-child(2) { height: 12px; }
+.bars i:nth-child(3) { height: 18px; }
+.bars[data-n="1"] i:nth-child(-n+1),
+.bars[data-n="2"] i:nth-child(-n+2),
+.bars[data-n="3"] i:nth-child(-n+3) { background: var(--red); }
+.lv-v strong { font-weight: 600; }
+.lv-v small { display: block; margin-top: 4px; color: var(--mute); font-size: 14px; line-height: 1.55; }
+@media (max-width: 520px) { .lv { grid-template-columns: minmax(0, 1fr); } }
+.delivery { margin-top: 32px; max-width: 62ch; border-top: 1px solid var(--ink); padding-top: 16px; }
+.delivery p { margin: 0; }
+
+/* Retorno e organização */
+.trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px 32px; }
+.trio > div { min-width: 0; border-top: 1px solid var(--ink); padding-top: 16px; }
+.trio p { margin: 0; }
+
+/* Listas */
+.rl { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.rl li {
+  position: relative; padding: 15px 8px 15px 28px; border-bottom: 1px solid var(--line);
+  transition: background-color .2s ease;
+}
+.rl li:hover { background: var(--white); }
+.rl li::before {
+  content: ""; position: absolute; left: 8px; top: 1.45em; width: 7px; height: 7px; background: var(--red);
+}
+.rl strong { font-weight: 600; }
+
+footer .wrap { padding-block: 30px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; color: var(--mute); font-size: 13px; }
+footer b { color: var(--ink); font-weight: 600; }
+
+a:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Ecossistema Gestão · Guardiã de demandas</p>
+    <h1>Disponibilidade e rotina de demandas</h1>
+    <p class="lede">Prezada Carol, seja bem-vinda. Este documento reúne meus horários de trabalho, os prazos de resposta e de entrega e a forma como organizo as demandas, a fim de assegurar a qualidade das entregas e a preservação da rotina.</p>
+  </div>
+</header>
+
+<nav class="bar" aria-label="Seções do documento">
+  <div class="wrap bar-in">
+    <span class="brand">Daniela Coimbra</span>
+    <div class="links">
+      <a href="#semana" data-t="semana">Semana</a>
+      <a href="#prazos" data-t="prazos">Prazos</a>
+      <a href="#retorno" data-t="retorno">Retorno</a>
+      <a href="#rotina" data-t="rotina">Rotina</a>
+    </div>
+  </div>
+</nav>
+
+<section id="semana">
+  <div class="wrap">
+    <h2>Disponibilidade semanal</h2>
+    <p class="sub">Horários em que me encontro em atividade, por dia da semana.</p>
+
+    <div class="now" id="now" role="status"><i class="dot"></i><span id="now-text">Verificando horário</span></div>
+
+    <div class="tbl" id="tbl" role="table" aria-label="Disponibilidade semanal"></div>
+  </div>
+</section>
+
+<section id="prazos">
+  <div class="wrap">
+    <h2>Prazo de resposta</h2>
+    <p class="sub">O prazo é contado a partir do próximo bloco de trabalho disponível. As demandas recebidas fora dos meus horários são atendidas no bloco seguinte.</p>
+    <ul class="levels">
+      <li class="lv">
+        <div class="lv-k"><span class="bars" data-n="1" aria-hidden="true"><i></i><i></i><i></i></span><span class="lv-name">Baixa complexidade</span></div>
+        <div class="lv-v"><strong>Resposta praticamente imediata.</strong></div>
+      </li>
+      <li class="lv">
+        <div class="lv-k"><span class="bars" data-n="2" aria-hidden="true"><i></i><i></i><i></i></span><span class="lv-name">Média complexidade</span></div>
+        <div class="lv-v"><strong>De 20 minutos a 1 hora.</strong></div>
+      </li>
+      <li class="lv">
+        <div class="lv-k"><span class="bars" data-n="3" aria-hidden="true"><i></i><i></i><i></i></span><span class="lv-name">Alta complexidade</span></div>
+        <div class="lv-v"><strong>De 1 hora a 1 ou 2 dias.</strong>
+          <small>O prazo varia conforme o volume de dados a serem levantados e o número de pessoas que concentram as informações.</small>
+        </div>
+      </li>
+    </ul>
+    <div class="delivery">
+      <h3 class="lab">Prazo de entrega</h3>
+      <p>O prazo de entrega depende da fila de demandas já em andamento. A nova demanda é encaixada entre elas ou após a sua conclusão, e o prazo correspondente é informado em seguida.</p>
+    </div>
+  </div>
+</section>
+
+<section id="retorno">
+  <div class="wrap">
+    <h2>Retorno e organização</h2>
+    <p class="sub">Como as demandas são incorporadas à minha rotina.</p>
+    <div class="trio">
+      <div>
+        <h3 class="lab">Retorno</h3>
+        <p>As respostas ocorrem dentro dos horários de disponibilidade indicados acima.</p>
+      </div>
+      <div>
+        <h3 class="lab">Organização</h3>
+        <p>As demandas são registradas no ERP e na minha agenda, ordenadas por prioridade e grau de complexidade.</p>
+      </div>
+      <div>
+        <h3 class="lab">Demandas complexas</h3>
+        <p>O material é organizado e a execução é iniciada no período da tarde, com finalização no período da noite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rotina">
+  <div class="wrap">
+    <h2>Rotina</h2>
+    <p class="sub">Informações complementares para o planejamento adequado dos horários.</p>
+    <ul class="rl">
+      <li>Sou mãe de 3 filhos que ainda não frequentam a escola. O ano letivo deles terá início em 2027.</li>
+      <li>Sou responsável pelos cuidados com a casa e pelo preparo das refeições. Também amamento, de modo que, eventualmente, poderei estar atendendo à criança durante um horário de trabalho.</li>
+      <li>Atuo também como terapeuta. Tenho 2 pacientes que ainda precisam concluir o ciclo de sessões. Concluído esse ciclo, encerrarei essa agenda.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span><b>Daniela Coimbra</b> · Ecossistema Gestão</span><span>Horários de Brasília (GMT-3)</span></div>
+</footer>
+
+<script>
+(function () {
+  var START = 9, HOURS = 16;
+  var DAYS = [
+    { dow: 1, s: 'SEG', n: 'Segunda-feira', b: [[9, 11.5], [15, 17], [21, 24]], m: [15, 21] },
+    { dow: 2, s: 'TER', n: 'Terça-feira',   b: [[9, 11.5], [15, 20.5], [22, 23]], m: [16, 18] },
+    { dow: 3, s: 'QUA', n: 'Quarta-feira',  b: [[9, 11.5], [15, 17], [21, 24]], m: [15, 21] },
+    { dow: 4, s: 'QUI', n: 'Quinta-feira',  b: [[9, 11.5], [15, 17], [21, 24]], m: [15, 21] },
+    { dow: 5, s: 'SEX', n: 'Sexta-feira',   b: [[9, 12.5], [15, 16], [22, 23]], m: [15] },
+    { dow: 6, s: 'SÁB', n: 'Sábado',        b: [[9, 10], [15, 17], [21, 22]], m: [15] }
+  ];
+  var byDow = {};
+  DAYS.forEach(function (d) { byDow[d.dow] = d; });
+  var DOWNAMES = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function fmt(h) {
+    var hh = Math.floor(h) % 24, mm = Math.round((h - Math.floor(h)) * 60);
+    return hh + 'h' + (mm ? pad(mm) : '');
+  }
+  function fmtEnd(h) { return h === 24 ? '00:00' : fmt(h); }
+  function dur(h) {
+    var H = Math.floor(h), M = Math.round((h - H) * 60);
+    if (!H) return M + ' min';
+    return H + 'h' + (M ? pad(M) : '');
+  }
+  function dayTotal(d) {
+    return d.b.reduce(function (t, b) { return t + (b[1] - b[0]); }, 0);
+  }
+
+  /* Hora atual em Brasília */
+  function brNow() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Sao_Paulo', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23'
+      }).formatToParts(new Date());
+      var o = {};
+      parts.forEach(function (p) { o[p.type] = p.value; });
+      var map = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      return { dow: map[o.weekday], h: (parseInt(o.hour, 10) % 24) + parseInt(o.minute, 10) / 60 };
+    } catch (e) {
+      var d = new Date();
+      return { dow: d.getDay(), h: d.getHours() + d.getMinutes() / 60 };
+    }
+  }
+
+  function activeAt(dow, h) {
+    var d = byDow[dow], i, b;
+    if (d) for (i = 0; i < d.b.length; i++) { b = d.b[i]; if (h >= b[0] && h < Math.min(b[1], 24)) return { end: b[1], day: dow }; }
+    var prev = byDow[(dow + 6) % 7];
+    if (prev) for (i = 0; i < prev.b.length; i++) { b = prev.b[i]; if (b[1] > 24 && h < b[1] - 24) return { end: b[1], day: prev.dow }; }
+    return null;
+  }
+  function nextStart(dow, h) {
+    for (var off = 0; off <= 7; off++) {
+      var d = byDow[(dow + off) % 7];
+      if (!d) continue;
+      for (var i = 0; i < d.b.length; i++) {
+        if (off > 0 || d.b[i][0] > h) return { off: off, day: d, start: d.b[i][0] };
+      }
+    }
+    return null;
+  }
+
+  /* Tabela semanal */
+  var PER = [
+    ['Manhã', function (st) { return st < 12; }],
+    ['Tarde', function (st) { return st >= 12 && st < 18; }],
+    ['Noite', function (st) { return st >= 18; }]
+  ];
+  var tbl = document.getElementById('tbl');
+  var todayDow = brNow().dow;
+  var headRow = '<div class="tr head" role="row"><span class="th" role="columnheader">Dia</span>' +
+    PER.map(function (p) { return '<span class="th" role="columnheader">' + p[0] + '</span>'; }).join('') + '</div>';
+  var bodyRows = DAYS.map(function (d) {
+    var cells = PER.map(function (p) {
+      var b = d.b.filter(function (x) { return p[1](x[0]); })[0];
+      if (!b) return '<div class="td" role="cell"><span class="pl">' + p[0] + '</span><span class="tv">Sem atividade</span></div>';
+      var len = b[1] - b[0];
+      var conn = ' às ';
+      return '<div class="td" role="cell"><span class="pl">' + p[0] + '</span>' +
+        '<span class="tv">' + fmt(b[0]) + conn + fmtEnd(b[1]) + '</span>' +
+        '<span class="tl">' + dur(len) + '</span>' +
+        '<span class="meter" aria-hidden="true"><i style="width:' + Math.round(len / 6 * 100) + '%"></i></span></div>';
+    }).join('');
+    var isToday = d.dow === todayDow;
+    return '<div class="tr' + (isToday ? ' today' : '') + '" role="row">' +
+      '<div class="td-day" role="rowheader"><span class="dn">' + d.n + (isToday ? '<span class="hoje">Hoje</span>' : '') + '</span>' +
+      '</div>' + cells + '</div>';
+  }).join('');
+  tbl.innerHTML = headRow + bodyRows;
+
+  /* Status em tempo real */
+  var nowEl = document.getElementById('now');
+  var nowText = document.getElementById('now-text');
+  function updateNow() {
+    var n = brNow();
+    var a = activeAt(n.dow, n.h);
+    if (a) {
+      nowEl.classList.add('live');
+      nowText.innerHTML = '<b>Em atividade agora</b> <span class="rest">· até ' + fmtEnd(a.end) + '</span>';
+      return;
+    }
+    nowEl.classList.remove('live');
+    var nx = nextStart(n.dow, n.h);
+    var when = '';
+    if (nx) {
+      when = nx.off === 0 ? 'hoje' : nx.off === 1 ? 'amanhã' : nx.day.n.toLowerCase();
+      when = ' <span class="rest">· próximo bloco ' + when + ', às ' + fmt(nx.start) + '</span>';
+    }
+    nowText.innerHTML = '<b>Fora do horário de atividade</b>' + when;
+  }
+  updateNow();
+  setInterval(updateNow, 60000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) updateNow(); });
+
+  /* Navegação */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var links = Array.prototype.slice.call(document.querySelectorAll('.links a'));
+  links.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var el = document.getElementById(a.getAttribute('data-t'));
+      if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) {
+          var on = a.getAttribute('data-t') === en.target.id;
+          a.classList.toggle('on', on);
+          if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    links.forEach(function (a) { io.observe(document.getElementById(a.getAttribute('data-t'))); });
+  }
+})();
+</script>
+
+</body></html>
